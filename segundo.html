@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plano Interactivo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .area-hover:hover {
+      fill: rgba(0, 0, 0, 0.05);
+    }
+    .info-box {
+      border: 1px solid #999;
+      padding: 15px;
+      margin-top: 15px;
+      background-color: #f7f7f7;
+      width: 60%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Plano Interactivo con Figuras</h1>
+
+  <svg viewBox="0 0 800 500" style="width: 100%; height:auto; background:white;">
+    <!-- Marco general -->
+    <rect x="50" y="50" width="700" height="400" fill="none" stroke="#666" stroke-width="3"></rect>
+
+    <!-- Línea en medio -->
+    <line x1="400" y1="50" x2="400" y2="450" stroke="black" stroke-width="2" />
+
+    <!-- Rectángulo 1: Recepción -->
+    <rect class="area-hover"
+          x="100" y="100" width="250" height="150"
+          fill="transparent" stroke="red" stroke-width="3"
+          onclick="mostrarInfo('recepcion')" style="cursor:pointer;" />
+
+    <!-- Rectángulo 2: Oficina -->
+    <rect class="area-hover"
+          x="450" y="100" width="250" height="120"
+          fill="transparent" stroke="blue" stroke-width="3"
+          onclick="mostrarInfo('oficina')" style="cursor:pointer;" />
+
+    <!-- Rectángulo 3: Almacén -->
+    <rect class="area-hover"
+          x="100" y="300" width="200" height="100"
+          fill="transparent" stroke="green" stroke-width="3"
+          onclick="mostrarInfo('almacen')" style="cursor:pointer;" />
+
+    <!-- Círculo: Descanso -->
+    <circle class="area-hover"
+            cx="600" cy="350" r="60"
+            fill="transparent" stroke="purple" stroke-width="3"
+            onclick="mostrarInfo('descanso')" style="cursor:pointer;" />
+  </svg>
+
+  <section id="infopanel" class="info-box">
+    <h3>Información del Área</h3>
+    <p id="areaInfo">Haz clic en cualquier área del plano para ver su información.</p>
+    <div id="areaDetails"></div>
+  </section>
+
+  <script>
+    // Datos de las áreas
+    const areasData = {
+      recepcion: {
+        nombre: "Recepción y Atención al Usuario",
+        responsable: "Ana Martínez",
+        equipos: "3 PCs, 1 impresora, 1 teléfono IP",
+        sistema: "Sistema de Tickets v2.1",
+        estado: "Operativo"
+      },
+      oficina: {
+        nombre: "Oficina Administrativa",
+        responsable: "Carlos López",
+        equipos: "2 Laptops, 1 Proyector",
+        sistema: "Gestión Empresarial v3.0",
+        estado: "En mantenimiento"
+      },
+      almacen: {
+        nombre: "Área de Almacén",
+        responsable: "María Pérez",
+        equipos: "1 Computadora, Sistema RFID",
+        sistema: "Control de Inventario v1.8",
+        estado: "Operativo"
+      },
+      descanso: {
+        nombre: "Zona de Descanso",
+        responsable: "Sin responsable fijo",
+        equipos: "Muebles, Cafetera, TV",
+        sistema: "Sin sistema asignado",
+        estado: "Libre"
+      }
+    };
+
+    // Mostrar información según el área
+    function mostrarInfo(areaKey) {
+      const area = areasData[areaKey];
+      const areaInfo = document.getElementById('areaInfo');
+      const areaDetails = document.getElementById('areaDetails');
+
+      if (area) {
+        areaInfo.innerHTML = `<strong>${area.nombre}</strong>`;
+        areaDetails.innerHTML = `
+          <table>
+            <tr><td><strong>Responsable:</strong></td><td>${area.responsable}</td></tr>
+            <tr><td><strong>Equipos:</strong></td><td>${area.equipos}</td></tr>
+            <tr><td><strong>Sistema:</strong></td><td>${area.sistema}</td></tr>
+            <tr><td><strong>Estado:</strong></td><td>${area.estado}</td></tr>
+          </table>
+          <p><em>Última actualización:</em> ${new Date().toLocaleString()}</p>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clase JavaScript</title>
+</head>
+<body>
+    <section id="app">
+        <h1>Calculadora de IVA</h1>
+        <form id="ivaForm">
+            <label>Precio base:</label>
+            <input type="number" id="precioBase" required>
+            <br><br>
+
+            <label>Tasa de IVA (%):</label>
+            <input type="number" id="tasaIVA" value="16" required>
+            <br><br>
+
+            <button type="submit">Calcular</button>
+        </form>
+
+        <div id="resultado"></div>
+    </section>
+
+    <script>
+        // Función para calcular IVA
+        function calcularIVA(precioBase, tasaIVA = 16) {
+            const ivaDecimal = tasaIVA / 100;
+            const iva = precioBase * ivaDecimal;
+            const total = precioBase + iva;
+            return { precioBase, iva, total };
+        }
+
+        //Correcto: getElementById()
+        const form = document.getElementById("ivaForm");
+        const resultadoDIV = document.getElementById("resultado");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const precioBase = parseFloat(document.getElementById("precioBase").value);
+            const tasaIVA = parseFloat(document.getElementById("tasaIVA").value);
+
+            const resultado = calcularIVA(precioBase, tasaIVA);
+
+            resultadoDIV.innerHTML = `
+                <p>Precio base: $${resultado.precioBase.toFixed(2)}</p>
+                <p>IVA (${tasaIVA}%): $${resultado.iva.toFixed(2)}</p>
+                <p><strong>Total: $${resultado.total.toFixed(2)}</strong></p>
+            `;
+        });
+    </script>
+</body>
+</html>

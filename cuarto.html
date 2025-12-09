@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Recetas tradicionales mexicanas con mapa interactivo y enlaces informativos.">
+    <title>Recetas Tradicionales Mexicanas</title>
+
+    <style>
+        /* ----------- ESTILO GENERAL ----------- */
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #faf7f2;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* ----------- HEADER ----------- */
+        header {
+            background: linear-gradient(135deg, #ff8c42, #ffb347);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+        header h1 { 
+            margin: 0; 
+            font-size: 2.8em; 
+            font-weight: 700;
+        }
+        header p { 
+            font-size: 1.2em; 
+            opacity: 0.9;
+            margin-top: 10px; 
+        }
+
+        /* ----------- NAV ----------- */
+        nav {
+            background-color: #fff;
+            padding: 12px 0;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 900;
+        }
+        nav a {
+            margin: 0 18px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        nav a:hover {
+            color: #ff8c42;
+            border-bottom: 2px solid #ff8c42;
+            padding-bottom: 4px;
+        }
+
+        /* ----------- SECCIONES ----------- */
+        section {
+            padding: 25px 40px;
+            max-width: 950px;
+            margin: 30px auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            color: #ff8c42;
+            border-left: 5px solid #ff8c42;
+            padding-left: 10px;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #333;
+            margin-top: 20px;
+            font-size: 1.3em;
+        }
+
+        /* Tarjetas de receta */
+        .recipe {
+            margin-top: 25px;
+        }
+        .recipe img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .recipe p {
+            margin: 15px 0;
+        }
+        .recipe a {
+            display: inline-block;
+            margin-top: 10px;
+            color: #ff8c42;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .recipe a:hover {
+            text-decoration: underline;
+        }
+
+        /* ----------- TABLA ----------- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+            font-size: 0.95em;
+        }
+        th {
+            background-color: #ff8c42;
+            color: white;
+            padding: 12px;
+            border: none;
+        }
+        td {
+            background-color: #fff9f2;
+            padding: 12px;
+            border-bottom: 1px solid #e7e7e7;
+        }
+
+        /* ----------- SVG MAPA ----------- */
+        svg {
+            width: 100%;
+            height: auto;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        .area:hover {
+            cursor: pointer;
+            opacity: 0.85;
+            transition: 0.2s;
+        }
+
+        /* ----------- FOOTER ----------- */
+        footer {
+            background-color: #ff8c42;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 1rem;
+        }
+
+        /* ----------- RESPONSIVE ----------- */
+        @media (max-width: 600px) {
+            header h1 { font-size: 2em; }
+            section { padding: 20px; }
+            nav a { margin: 0 10px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Recetas Tradicionales Mexicanas</h1>
+        <p>Explora los sabores de México con nuestro mapa interactivo</p>
+    </header>
+
+    <nav>
+        <a href="#recetas">Recetas</a>
+        <a href="#mapa">Mapa Interactivo</a>
+        <a href="#tabla">Tabla Resumen</a>
+        <a href="#footer">Integrantes</a>
+    </nav>
+
+    <!-- SECCIÓN DE RECETAS -->
+    <section id="recetas">
+        <h2>Recetas Populares</h2>
+
+        <div class="recipe" id="pozole">
+            <h3>Pozole Rojo</h3>
+            <img src="https://www.cocinadelirante.com/800x600/filters:format(webp):quality(75)/sites/default/files/images/2024/07/receta-de-pozole-rojo-de-pollo.jpg" alt="Pozole rojo">
+            <p>Platillo tradicional del norte de México, hecho a base de maíz, carne y chile guajillo.</p>
+            <a href="#tabla">Ver resumen en tabla</a>
+        </div>
+
+        <div class="recipe" id="mole">
+            <h3>Mole Poblano</h3>
+            <img src="https://www.gob.mx/cms/uploads/article/main_image/80518/mole_poblano.jpg" alt="Mole poblano">
+            <p>Clásico de Puebla con chiles, chocolate y especias, perfecto sobre pollo o pavo.</p>
+            <a href="#tabla">Ver resumen en tabla</a>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DEL MAPA -->
+    <section id="mapa">
+        <h2>Mapa Interactivo de Recetas</h2>
+        <p>Haz clic en las regiones del mapa para descubrir más sobre sus platillos tradicionales.</p>
+
+        <svg viewBox="0 0 600 400">
+            <image href="https://www.cocinadelirante.com/800x600/filters:format(webp):quality(75)/sites/default/files/images/2024/07/receta-de-pozole-rojo-de-pollo.jpg"></image>
+
+            <rect x="50" y="100" width="200" height="100" fill="#e63946" class="area"
+                  onclick="location.href='#pozole'" />
+            <text x="90" y="160" fill="white" font-size="18">Pozole Rojo</text>
+
+            <rect x="250" y="200" width="200" height="100" fill="#457b9d" class="area"
+                  onclick="location.href='#mole'" />
+            <text x="310" y="260" fill="white" font-size="18">Mole Poblano</text>
+
+            <a href="https://www.mexicodesconocido.com.mx/pozole-rojo.html" target="_blank">
+                <circle cx="150" cy="250" r="20" fill="#2a9d8f" class="area" />
+            </a>
+            <a href="https://www.mexicodesconocido.com.mx/mole-poblano.html" target="_blank">
+                <circle cx="450" cy="100" r="20" fill="#f4a261" class="area" />
+            </a>
+        </svg>
+    </section>
+
+    <!-- SECCIÓN DE TABLA -->
+    <section id="tabla">
+        <h2>Tabla Resumen de Platillos</h2>
+        <table>
+            <tr>
+                <th colspan="2">Platillo</th>
+                <th>Origen</th>
+                <th>Características</th>
+            </tr>
+            <tr>
+                <td rowspan="2"><strong>Pozole Rojo</strong></td>
+                <td>Ingrediente base</td>
+                <td>Norte de México</td>
+                <td>Maíz, carne de cerdo, chile guajillo</td>
+            </tr>
+            <tr>
+                <td>Presentación</td>
+                <td colspan="2">Se sirve en plato hondo con lechuga, rábano y orégano</td>
+            </tr>
+            <tr>
+                <td rowspan="2"><strong>Mole Poblano</strong></td>
+                <td>Ingrediente base</td>
+                <td>Puebla</td>
+                <td>Chiles, chocolate, especias</td>
+            </tr>
+            <tr>
+                <td>Presentación</td>
+                <td colspan="2">Servido sobre piezas de pollo o pavo</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <p>Integrantes del equipo: <strong>Ian Osiris Celaya Hernández</strong> – <strong>Angel Gerardo Celaya Hernández</strong></p>
+    </footer>
+
+</body>
+</html>

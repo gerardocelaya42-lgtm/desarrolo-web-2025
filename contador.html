@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clase JavaScript</title>
+</head>
+<body>
+ <section id="contador">
+    <h2>contador:<span id="valor">0</span></h2>
+    <button id="incrementar">+</button>
+    <button id="decrementar">-</button>
+    <button id="reset">reset</button>
+ </script>
+ <section>
+    <script>
+        let contador = 0;
+
+        const valorSpan = document.getElementById("valor");
+        const incrementarBtn = document.getElementById("incrementar");
+        const decrementarBtn = document.getElementById("decrementar");
+        const resetBtn = document.getElementById("reset");
+
+        function actualizarValor() {
+            valorSpan.textContent = contador;
+        }
+
+        incrementarBtn.addEventListener("click", function() {
+            contador++;
+            actualizarValor();
+        });
+
+        decrementarBtn.addEventListener("click", function() {
+            contador--;
+            actualizarValor();
+        });
+
+        resetBtn.addEventListener("click", function() {
+            contador = 0;
+            actualizarValor();
+        });
+    </script>
+</body>
+</html>
