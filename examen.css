@@ -1,0 +1,57 @@
+   .course-cell.ingles {
+
+            background-color: #e1f5fe;
+
+        }
+
+        
+
+        .course-cell.tenis {
+
+            background-color: #e8f5e9;
+
+        }
+
+        
+
+        .course-cell.pintura {
+
+            background-color: #fff3e0;
+
+        }
+
+        
+
+        .course-cell.futbol {
+
+            background-color: #ffebee;
+
+        }
+
+        
+
+        .course-cell.musica {
+
+            background-color: #f3e5f5;
+
+        }
+
+        
+
+        .course-cell::after {
+
+            content: '';
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            right: 0;
+
+            height: 4px;
+
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+
+        }
